@@ -14,7 +14,8 @@ async function getData(params = "new", page = 1) {
 	const queryPage = page || 1;
 	try {
 		const res = await fetch(
-			`https://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&s=${params}&page=${page}`
+			`https://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&s=${params}&page=${page}`,
+			{ cache: "no-store" }
 		);
 		const moviesJson = await res.json();
 		if (moviesJson.Search) {

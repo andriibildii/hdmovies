@@ -10,7 +10,7 @@ interface IMovie {
 }
 
 async function getData(params = "new", page = 1) {
-	console.log("Page from function", page);
+	// console.log("Page from function", page);
 	const queryPage = page || 1;
 	try {
 		const res = await fetch(
@@ -37,20 +37,22 @@ export default async function Home({
 	searchParams?: { [key: string]: string };
 }) {
 	const querySearch = searchParams?.search;
-	const queryPage = searchParams?.page;
+	// const queryPage = searchParams?.page;
 
-	console.log("queryPage", queryPage);
+	// console.log("queryPage", queryPage);
 
-	let moviesData;
+	let moviesData = await getData(querySearch);
 
-	if (!queryPage) {
-		moviesData = await getData(querySearch);
-	}
+	// let moviesData;
 
-	if (queryPage) {
-		const page = Number(queryPage);
-		moviesData = await getData(querySearch, page);
-	}
+	// if (!queryPage) {
+	// 	moviesData = await getData(querySearch);
+	// }
+
+	// if (queryPage) {
+	// 	const page = Number(queryPage);
+	// 	moviesData = await getData(querySearch, page);
+	// }
 	// console.log(moviesData);
 	// console.log(moviesData.totalResults);
 

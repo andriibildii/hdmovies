@@ -7,7 +7,7 @@ export const fetchMovie = createAsyncThunk(
 	"favorites/getFavorites",
 	async (id: string) => {
 		const response = await fetch(
-			`http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&i=${id}&plot=full`
+			`https://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&i=${id}&plot=full`
 		);
 		const data = await response.json();
 		return data;

@@ -11,8 +11,14 @@ type PropsType = {
 export default function Movie({ id, title, year, poster }: PropsType) {
 	return (
 		<div className="flex justify-start flex-col items-center">
-			<Link href={`/${id}`}>
-				<Image src={poster} width={300} height={445} alt="poster" />
+			<Link href={`/${id}`} as={"image"}>
+				<Image
+					src={poster}
+					width={300}
+					height={445}
+					alt="poster"
+					priority={true}
+				/>
 			</Link>
 			<div className="flex flex-col justify-center items-center pt-4">
 				<h3 className="text-lg text-slate-900 font-bold">{title}</h3>

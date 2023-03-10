@@ -10,7 +10,7 @@ export default async function MovieDetail({ params }: IMovieDetail) {
 	const id = params.movie;
 
 	const data = await fetch(
-		`http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&i=${id}&plot=full`,
+		`https://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&i=${id}&plot=full`,
 		{ next: { revalidate: 60 } }
 	);
 	const movie = await data.json();

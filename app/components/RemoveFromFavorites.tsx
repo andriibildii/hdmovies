@@ -37,27 +37,14 @@ export default function RemoveFromFavorites({ id }: { id: string }) {
 
 	return (
 		<div>
-			{/* <Tooltip title="Remove from Favorites" sx={{ color: "red" }}>
-				<IconButton>
-					<button onClick={handleClick}>
-						<FaTrash className="text-3xl text-red-500 hover:text-red-900 " />
-					</button>
-				</IconButton>
-			</Tooltip>
-			<Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-				<Alert onClose={handleClose} severity="warning" sx={{ width: "100%" }}>
-					The movie has been removed from Favorites
-				</Alert>
-			</Snackbar> */}
-
-			<Tooltip title="Add to Favorites" sx={{ color: "red" }}>
+			<Tooltip title="Remove from Favorites" sx={{ color: "red" }}>
 				<IconButton onClick={handleClick}>
 					<FaTrash className="text-3xl text-red-500 hover:text-red-900 " />
 				</IconButton>
 			</Tooltip>
 			<Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
 				<Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-					The movie has been added to Favorites
+					The movie has been removed from Favorites
 				</Alert>
 			</Snackbar>
 		</div>

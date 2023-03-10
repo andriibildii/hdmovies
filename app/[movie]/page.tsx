@@ -23,8 +23,7 @@ export default async function MovieDetail({ params }: IMovieDetail) {
 					width={300}
 					height={445}
 					alt="poster"
-					placeholder="blur"
-					blurDataURL={movie.Poster}
+					priority={true}
 				/>
 				<AddToFavorites id={movie.imdbID} />
 				<div className="mx-2">

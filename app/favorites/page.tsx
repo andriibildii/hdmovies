@@ -1,17 +1,21 @@
 "use client";
 import Image from "next/image";
-import { useSelector, useDispatch } from "react-redux";
+import Link from "next/link";
+import RemoveFromFavorites from "../components/RemoveFromFavorites";
+import { useAppSelector } from "../hooks";
 
 export default function FavoritesFilms() {
-	const favoriteMovies = useSelector((state) => state.favorites.favorites);
-	console.log(favoriteMovies);
+	const favoriteMovies = useAppSelector((state) => state.favorites.favorites);
 
 	return (
 		<div>
 			{favoriteMovies?.map((movie) => (
 				<div key={movie.imdbID}>
 					<div className="flex justify-center items-start flex-wrap sm:flex-nowrap">
-						<Image src={movie.Poster} width={300} height={445} alt="poster" />
+						<Link href={`/${movie.imdbID}`}>
+							<Image src={movie.Poster} width={300} height={445} alt="poster" />
+						</Link>
+						<RemoveFromFavorites id={movie.imdbID} />
 						<div className="mx-2">
 							<h2 className="text-2xl font-bold">{movie.Title}</h2>
 							<h2 className="text-lg">Released: {movie.Released}</h2>

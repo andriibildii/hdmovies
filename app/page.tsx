@@ -1,4 +1,5 @@
 import Movies from "./Movies";
+import PaginationContainer from "./components/PaginationContainer";
 
 interface IMovie {
 	Title: string;
@@ -8,17 +9,17 @@ interface IMovie {
 	Poster: string;
 }
 
-async function getData(params = "new") {
+async function getData(params = "new", page = 1) {
+	console.log("Page from function", page);
+	const queryPage = page || 1;
 	try {
 		const res = await fetch(
-			`http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&s=${params}`
+			`http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&s=${params}&page=${page}`
 		);
 		const moviesJson = await res.json();
-
 		if (moviesJson.Search) {
 			return moviesJson;
 		}
-
 		if (!moviesJson.Search) {
 			throw new Error(moviesJson.Error);
 		}
@@ -35,9 +36,23 @@ export default async function Home({
 }: {
 	searchParams?: { [key: string]: string };
 }) {
-	const querySearch = searchParams?.search || "new";
+	const querySearch = searchParams?.search;
+	const queryPage = searchParams?.page;
 
-	const moviesData = await getData(querySearch);
+	console.log("queryPage", queryPage);
+
+	let moviesData;
+
+	if (!queryPage) {
+		moviesData = await getData(querySearch);
+	}
+
+	if (queryPage) {
+		const page = Number(queryPage);
+		moviesData = await getData(querySearch, page);
+	}
+	// console.log(moviesData);
+	// console.log(moviesData.totalResults);
 
 	return (
 		<main className="text-lg">
@@ -56,6 +71,8 @@ export default async function Home({
 					))
 				)}
 			</div>
+			7
+			{/* <PaginationContainer page={queryPage} querySearch={querySearch} /> */}
 		</main>
 	);
 }

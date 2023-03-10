@@ -2,8 +2,9 @@ import "./globals.css";
 import Link from "next/link";
 import { Montserrat } from "next/font/google";
 import SearchField from "./components/SearchField";
-import { Providers } from "./provider";
+import { Providers } from "./store/provider";
 import { MdFavorite } from "react-icons/md";
+import PaginationContainer from "./components/PaginationContainer";
 
 const montserrat = Montserrat({
 	weight: ["400", "700"],
@@ -37,6 +38,7 @@ export default function RootLayout({
 				</nav>
 				<SearchField />
 				<Providers>{children}</Providers>
+				{/* <PaginationContainer /> */}
 			</body>
 		</html>
 	);

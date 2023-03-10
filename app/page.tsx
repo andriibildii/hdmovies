@@ -1,91 +1,61 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import styles from './page.module.css'
+import Movies from "./Movies";
 
-const inter = Inter({ subsets: ['latin'] })
+interface IMovie {
+	Title: string;
+	Year: string;
+	imdbID: string;
+	Type: string;
+	Poster: string;
+}
 
-export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+async function getData(params = "new") {
+	try {
+		const res = await fetch(
+			`http://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&s=${params}`
+		);
+		const moviesJson = await res.json();
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
+		if (moviesJson.Search) {
+			return moviesJson;
+		}
 
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+		if (!moviesJson.Search) {
+			throw new Error(moviesJson.Error);
+		}
+	} catch (error) {
+		console.error("Catch some error", { error });
+		return {
+			error: `Catch some ${error}`,
+		};
+	}
+}
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
+export default async function Home({
+	searchParams,
+}: {
+	searchParams?: { [key: string]: string };
+}) {
+	const querySearch = searchParams?.search || "new";
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+	const moviesData = await getData(querySearch);
+
+	return (
+		<main className="text-lg">
+			<div className="grid gap-10 grid-cols-fluid my-6 p-6 bg-slate-600 rounded-lg">
+				{moviesData.error ? (
+					<h3>{moviesData.error}</h3>
+				) : (
+					moviesData.Search?.map((movies: IMovie) => (
+						<Movies
+							id={movies.imdbID}
+							key={movies.imdbID}
+							title={movies.Title}
+							year={movies.Year}
+							poster={movies.Poster}
+						/>
+					))
+				)}
+			</div>
+		</main>
+	);
 }

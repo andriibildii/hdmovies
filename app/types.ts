@@ -1,4 +1,4 @@
-export interface IFavoritesMovie {
+export interface IMovie {
     Title: string;
     Year: string;
     Rated: string;

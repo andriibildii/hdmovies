@@ -22,6 +22,7 @@ export default function Movie({ id, title, year, poster }: PropsType) {
                     height={445}
                     alt='poster'
                     priority={true}
+                    className='drop-shadow-xl'
                 />
             </Link>
             <div className='flex flex-col justify-center items-center pt-4'>

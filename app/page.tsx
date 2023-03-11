@@ -1,7 +1,7 @@
 import Movies from './Movies';
 import PaginationLine from './components/PaginationLine';
 
-interface IMovie {
+interface IMovieSearch {
     Title: string;
     Year: string;
     imdbID: string;
@@ -61,7 +61,7 @@ export default async function Home({
                 {moviesData.error ? (
                     <h3>{moviesData.error}</h3>
                 ) : (
-                    moviesData.Search?.map((movies: IMovie) => (
+                    moviesData.Search?.map((movies: IMovieSearch) => (
                         <Movies
                             id={movies.imdbID}
                             key={movies.imdbID}

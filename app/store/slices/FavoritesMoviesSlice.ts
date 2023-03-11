@@ -1,7 +1,7 @@
 'use client';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { IFavoritesMovie } from '../../types';
+import { IMovie } from '../../types';
 
 export const fetchMovie = createAsyncThunk(
     'favorites/getFavorites',
@@ -15,7 +15,7 @@ export const fetchMovie = createAsyncThunk(
 );
 
 interface IInitialState {
-    favorites: Array<IFavoritesMovie>;
+    favorites: Array<IMovie>;
 }
 
 const initialState: IInitialState = {
@@ -35,7 +35,7 @@ const FavoritesMoviesSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(
             fetchMovie.fulfilled,
-            (state, action: PayloadAction<IFavoritesMovie>) => {
+            (state, action: PayloadAction<IMovie>) => {
                 const movie = state.favorites.find(
                     (movie) => movie.imdbID === action.payload.imdbID
                 );

@@ -18,8 +18,5 @@ module.exports = {
             fluid: 'repeat(auto-fit, minmax(15rem, 1fr))',
         },
     },
-    variants: {
-        backgroundColor: ['responsive', 'hover', 'focus', 'active'],
-    },
     plugins: [],
 };

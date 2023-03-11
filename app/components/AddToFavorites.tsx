@@ -1,12 +1,12 @@
 'use client';
-import { MdFavorite } from 'react-icons/md';
-import { useAppDispatch } from '../hooks';
+import { forwardRef, useState } from 'react';
 import { fetchMovie } from '../store/slices/FavoritesMoviesSlice';
+import { useAppDispatch } from '../hooks';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
-import { forwardRef, useState } from 'react';
+import { MdFavorite } from 'react-icons/md';
 
 const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
     props,
@@ -26,7 +26,6 @@ export default function AddToFavorites({ id }: { id: string }) {
         if (reason === 'clickaway') {
             return;
         }
-
         setOpen(false);
     };
 
@@ -39,7 +38,7 @@ export default function AddToFavorites({ id }: { id: string }) {
         <div>
             <Tooltip title='Add to Favorites' sx={{ color: 'red' }}>
                 <IconButton onClick={handleClick}>
-                    <MdFavorite className='text-3xl text-red-500 hover:text-red-900 ' />
+                    <MdFavorite className='text-2xl text-red-500 hover:text-red-900 ' />
                 </IconButton>
             </Tooltip>
             <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>

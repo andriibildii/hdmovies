@@ -18,7 +18,7 @@ export default function PaginationLine({
     const [pageSize] = useState(10);
     const router = useRouter();
 
-	useEffect(() => {
+    useEffect(() => {
         if (currentPage) router.push(`/?page=${currentPage}`);
     }, [currentPage]);
 

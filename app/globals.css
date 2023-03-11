@@ -37,8 +37,8 @@ a {
 
 .css-1y7coo4-MuiButtonBase-root-MuiPaginationItem-root,
 .css-1b5ei7m {
-    color: rgb(236 254 255 / 1);
-    border-color: rgb(236 254 255 / 1);
+    color: rgb(236 254 255 / 1) !important;
+    border-color: rgb(236 254 255 / 1) !important;
 }
 
 .css-1y7coo4-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected,

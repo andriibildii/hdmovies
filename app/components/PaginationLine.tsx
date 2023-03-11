@@ -5,29 +5,43 @@ import Pagination from '@mui/material/Pagination';
 
 interface IPaginationProps {
     items: number;
-    mainPage: number;
-    resetPage: number;
+    customPage: number;
+    customSearch: string | undefined;
 }
 
 export default function PaginationLine({
     items,
-    mainPage,
-    resetPage,
+    customPage,
+    customSearch,
 }: IPaginationProps) {
-    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [currentPage, setCurrentPage] = useState<number>();
     const [pageSize] = useState(10);
     const router = useRouter();
+    const [search, setSearch] = useState<string>();
 
     useEffect(() => {
-        if (currentPage) router.push(`/?page=${currentPage}`);
-    }, [currentPage]);
-
-    useEffect(() => {
-        if (currentPage && currentPage !== 1) {
-            console.log('resetPage from useEffect', resetPage);
-            setCurrentPage(resetPage);
+        if (
+            customPage === null ||
+            customPage === undefined ||
+            customPage === 1
+        ) {
+            setCurrentPage(1);
         }
-    }, [resetPage]);
+        if (customSearch === undefined) {
+            setSearch('new');
+        }
+    }, [customPage, customSearch]);
+
+    useEffect(() => {
+        if (customSearch !== search && customSearch) {
+            setSearch(customSearch);
+        }
+    }, [customSearch]);
+
+    useEffect(() => {
+        if (currentPage && search)
+            router.push(`/?search=${search}&page=${currentPage}`);
+    }, [currentPage]);
 
     const pagesCount = Math.ceil(items / pageSize);
     if (pagesCount === 1) return null;
@@ -41,7 +55,7 @@ export default function PaginationLine({
             <p className='text-md text-white-500 my-4 pl-6 font-montserrat'>
                 Showing{' '}
                 <span className='text-2xl text-slate-900 font-bold'>
-                    {currentPage}
+                    {currentPage || 1}
                 </span>{' '}
                 of <span className='font-medium'>{pagesCount}</span> results
             </p>

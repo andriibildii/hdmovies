@@ -9,8 +9,10 @@ interface IMovieSearch {
     Poster: string;
 }
 
-async function getData(params = 'new', page = '1') {
+async function getData(params: string, page: string) {
     try {
+        console.log('params', params);
+        console.log('page', page);
         const res = await fetch(
             `https://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&s=${params}&page=${page}`,
             { cache: 'no-store' }
@@ -36,24 +38,11 @@ export default async function Home({
     searchParams?: { [key: string]: string };
 }) {
     // Take search and page params
-    const customSearch = searchParams?.search;
-    const customPage = searchParams?.page;
-
-    let currentPage: string | undefined = '1';
-    if (customPage !== currentPage) {
-        currentPage = customPage;
-    }
-
-    let resetPages: string = '0';
-    if (customPage === undefined) {
-        resetPages = '1';
-    }
+    const customSearch = searchParams?.search || 'new';
+    const customPage = searchParams?.page || '1';
 
     // Movies request
-    let moviesData = await getData(customSearch);
-    if (customPage && customPage !== '1') {
-        moviesData = await getData(customSearch, currentPage);
-    }
+    const moviesData = await getData(customSearch, customPage);
 
     return (
         <main className='text-lg'>
@@ -74,8 +63,8 @@ export default async function Home({
             </div>
             <PaginationLine
                 items={Number(moviesData.totalResults)}
-                mainPage={Number(currentPage)}
-                resetPage={Number(resetPages)}
+                customPage={Number(customPage)}
+                customSearch={customSearch}
             />
         </main>
     );

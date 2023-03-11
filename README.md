@@ -1,38 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# HD Movies
 
-## Getting Started
+### Movie search application using Next.js and the OMDB API.
 
-First, run the development server:
+## ![Hero](./public/hero.png 'Hero')
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+[Deployed App](https://hdmovies-andriibildii.vercel.app 'Deployed App')
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project was created by:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+-   TypeScript
+-   NextJS 13
+-   Redux Toolkit
+-   Tailwindcss
+-   Material UI
+-   OMDB API (http://www.omdbapi.com/)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+The application allows users to search for movies by title and display a list of matching movies with basic information about each one.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Users can click on a movie from the list, and they link to a details page that displays more information about that movie, such as plot, actors, and ratings.
 
-## Learn More
+In order for the user to find a movie, has been implemented **Search bar** in which the user can search for a movie that interests him.
 
-To learn more about Next.js, take a look at the following resources:
+since the users get only 10 movies after completing the search query, at the first page of the application implemented **Pagination**, which allows users to see the rest of the movies.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Users have the ability to **Save their favorite movies** to favorites, view saved movies on a separate page of the application, and remove movies from favorites.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+This feature is implemented using the Redux Toolkit state manager.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**This application was made using NextJS 13**

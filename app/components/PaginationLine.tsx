@@ -15,18 +15,10 @@ export default function PaginationLine({
     resetPage,
 }: IPaginationProps) {
     const [currentPage, setCurrentPage] = useState<number>(1);
-    console.log('currentPage from state', currentPage);
     const [pageSize] = useState(10);
     const router = useRouter();
 
-    const pagesCount = Math.ceil(items / pageSize);
-    if (pagesCount === 1) return null;
-
-    const handleChange = (event: React.ChangeEvent<unknown>, page: number) => {
-        setCurrentPage(page);
-    };
-
-    useEffect(() => {
+	useEffect(() => {
         if (currentPage) router.push(`/?page=${currentPage}`);
     }, [currentPage]);
 
@@ -36,6 +28,13 @@ export default function PaginationLine({
             setCurrentPage(resetPage);
         }
     }, [resetPage]);
+
+    const pagesCount = Math.ceil(items / pageSize);
+    if (pagesCount === 1) return null;
+
+    const handleChange = (event: React.ChangeEvent<unknown>, page: number) => {
+        setCurrentPage(page);
+    };
 
     return (
         <div className='flex justify-between items-center px-2 bg-slate-600 rounded-lg my-6 p-2 '>

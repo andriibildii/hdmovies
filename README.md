@@ -1,6 +1,6 @@
 # HD Movies
 
-### Movie search application using Next.js and the OMDB API.
+### Movie search application using Next.js 13 and the OMDB API.
 
 ## ![Hero](./public/hero.png 'Hero')
 
@@ -11,11 +11,12 @@
 This project was created by:
 
 -   TypeScript
--   NextJS 13
+-   Next.js 13
 -   Redux Toolkit
 -   Tailwindcss
 -   Material UI
 -   OMDB API (http://www.omdbapi.com/)
+-   ESLint and Prettier
 
 The application allows users to search for movies by title and display a list of matching movies with basic information about each one.
 
@@ -29,4 +30,4 @@ Users have the ability to **Save their favorite movies** to favorites, view save
 
 This feature is implemented using the Redux Toolkit state manager.
 
-**This application was made using NextJS 13**
+**This application was made using Next.js 13**

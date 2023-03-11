@@ -1,5 +1,5 @@
 import Movies from './Movies';
-import PaginationContainer from './components/PaginationContainer';
+import PaginationLine from './components/PaginationLine';
 
 interface IMovie {
     Title: string;
@@ -9,9 +9,7 @@ interface IMovie {
     Poster: string;
 }
 
-async function getData(params = 'new', page = 1) {
-    // console.log("Page from function", page);
-    const queryPage = page || 1;
+async function getData(params = 'new', page = '1') {
     try {
         const res = await fetch(
             `https://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&s=${params}&page=${page}`,
@@ -37,25 +35,25 @@ export default async function Home({
 }: {
     searchParams?: { [key: string]: string };
 }) {
-    const querySearch = searchParams?.search;
-    // const queryPage = searchParams?.page;
+    // Take search and page params
+    const customSearch = searchParams?.search;
+    const customPage = searchParams?.page;
 
-    // console.log("queryPage", queryPage);
+    let currentPage: string | undefined = '1';
+    if (customPage !== currentPage) {
+        currentPage = customPage;
+    }
 
-    let moviesData = await getData(querySearch);
+    let resetPages: string = '0';
+    if (customPage === undefined) {
+        resetPages = '1';
+    }
 
-    // let moviesData;
-
-    // if (!queryPage) {
-    // 	moviesData = await getData(querySearch);
-    // }
-
-    // if (queryPage) {
-    // 	const page = Number(queryPage);
-    // 	moviesData = await getData(querySearch, page);
-    // }
-    // console.log(moviesData);
-    // console.log(moviesData.totalResults);
+    // Movies request
+    let moviesData = await getData(customSearch);
+    if (customPage && customPage !== '1') {
+        moviesData = await getData(customSearch, currentPage);
+    }
 
     return (
         <main className='text-lg'>
@@ -74,8 +72,11 @@ export default async function Home({
                     ))
                 )}
             </div>
-            7
-            {/* <PaginationContainer page={queryPage} querySearch={querySearch} /> */}
+            <PaginationLine
+                items={Number(moviesData.totalResults)}
+                mainPage={Number(currentPage)}
+                resetPage={Number(resetPages)}
+            />
         </main>
     );
 }

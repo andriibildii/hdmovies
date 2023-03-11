@@ -34,3 +34,20 @@ a {
         color-scheme: dark;
     }
 }
+
+.css-1y7coo4-MuiButtonBase-root-MuiPaginationItem-root {
+    color: rgb(236 254 255 / 1);
+    border-color: rgb(236 254 255 / 1);
+}
+
+.css-1y7coo4-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+    color: rgb(236 254 255 / 1);
+    border-color: rgb(236 254 255 / 1);
+    background-color: rgb(71 85 105 / 1);
+}
+
+.css-1y7coo4-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected:hover {
+    color: rgb(15 23 42 / 1);
+    border-color: rgb(236 254 255 / 1);
+    background-color: rgb(236 254 255 / 1);
+}

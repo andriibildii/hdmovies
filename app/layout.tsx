@@ -4,7 +4,6 @@ import { Montserrat } from 'next/font/google';
 import SearchField from './components/SearchField';
 import { Providers } from './store/provider';
 import { MdFavorite } from 'react-icons/md';
-import PaginationContainer from './components/PaginationContainer';
 
 const montserrat = Montserrat({
     weight: ['400', '700'],
@@ -26,7 +25,7 @@ export default function RootLayout({
         <html lang='en' className={`${montserrat.variable}`}>
             <body className='px-6 mx-0 md:max-w-5xl md:mx-auto bg-slate-900 text-cyan-50 font-montserrat'>
                 <nav className='py-6 flex items-center justify-between'>
-                    <Link href={'/'} className='text-lg font-medium'>
+                    <Link href={`/`} className='text-lg font-medium'>
                         HD Movies
                     </Link>
                     <Link href={'/favorites'}>
@@ -38,7 +37,6 @@ export default function RootLayout({
                 </nav>
                 <SearchField />
                 <Providers>{children}</Providers>
-                {/* <PaginationContainer /> */}
             </body>
         </html>
     );

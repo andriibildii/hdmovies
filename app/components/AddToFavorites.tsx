@@ -38,7 +38,7 @@ export default function AddToFavorites({ id }: { id: string }) {
         <div>
             <Tooltip title='Add to Favorites' sx={{ color: 'red' }}>
                 <IconButton onClick={handleClick}>
-                    <MdFavorite className='text-2xl text-red-500 hover:text-red-900 ' />
+                    <MdFavorite className='text-2xl text-red-600 hover:text-red-900 ' />
                 </IconButton>
             </Tooltip>
             <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>

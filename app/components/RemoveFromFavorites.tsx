@@ -16,7 +16,7 @@ export default function RemoveFromFavorites({ id }: { id: string }) {
         <div>
             <Tooltip title='Remove from Favorites' sx={{ color: 'red' }}>
                 <IconButton onClick={handleClick}>
-                    <FaTrash className='text-2xl text-red-500 hover:text-red-900 ' />
+                    <FaTrash className='text-2xl text-red-600 hover:text-red-900 ' />
                 </IconButton>
             </Tooltip>
         </div>

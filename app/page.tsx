@@ -44,7 +44,7 @@ export default async function Home({
 
     return (
         <main className='text-lg'>
-            <div className='grid gap-10 grid-cols-fluid my-6 p-6 bg-slate-600 rounded-lg'>
+            <div className='my-6 grid grid-cols-fluid gap-10 rounded-lg bg-slate-600 p-6'>
                 {moviesData.error ? (
                     <h3>{moviesData.error}</h3>
                 ) : (

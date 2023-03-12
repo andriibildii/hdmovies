@@ -25,7 +25,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang='en' className={`${montserrat.variable}`}>
-            <body className='px-6 mx-0 md:max-w-5xl md:mx-auto bg-slate-900 text-cyan-50 font-montserrat'>
+            <body className='mx-0 bg-slate-900 px-6 font-montserrat text-cyan-50 md:mx-auto md:max-w-5xl'>
                 <Providers>
                     <NavBar />
                     <SearchField />

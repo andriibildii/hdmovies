@@ -10,7 +10,7 @@ type PropsType = {
 
 export default function Movie({ id, title, year, poster }: PropsType) {
     return (
-        <div className='flex justify-start flex-col items-center'>
+        <div className='flex flex-col items-center justify-start'>
             <Link href={`/${id}`}>
                 <Image
                     src={`${
@@ -25,8 +25,8 @@ export default function Movie({ id, title, year, poster }: PropsType) {
                     className='drop-shadow-xl'
                 />
             </Link>
-            <div className='flex flex-col justify-center items-center pt-4'>
-                <h3 className='text-lg text-slate-900 font-bold'>{title}</h3>
+            <div className='flex flex-col items-center justify-center pt-4'>
+                <h3 className='text-lg font-bold text-slate-900'>{title}</h3>
                 <p>Year {year}</p>
             </div>
         </div>

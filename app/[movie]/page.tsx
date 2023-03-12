@@ -7,37 +7,37 @@ function getRate(param: string) {
     switch (param) {
         case 'G':
             return (
-                <h2 className='bg-green-800 my-2 rounded-sm pl-2'>
+                <h2 className='my-2 rounded-sm bg-green-800 pl-2'>
                     {param} – General Audiences
                 </h2>
             );
         case 'PG':
             return (
-                <h2 className='bg-orange-500 pl-2 rounded-sm'>
+                <h2 className='rounded-sm bg-orange-500 pl-2'>
                     {param} – Parental Guidance Suggested
                 </h2>
             );
         case 'PG-13':
             return (
-                <h2 className='bg-purple-800 rounded-sm pl-2'>
+                <h2 className='rounded-sm bg-purple-800 pl-2'>
                     {param} – Parents Strongly Cautioned
                 </h2>
             );
         case 'R':
             return (
-                <h2 className='bg-red-800 rounded-sm pl-2'>
+                <h2 className='rounded-sm bg-red-800 pl-2'>
                     {param} – Restricted
                 </h2>
             );
 
         case 'NC-17':
             return (
-                <h2 className='bg-blue-800 rounded-sm pl-2'>
+                <h2 className='rounded-sm bg-blue-800 pl-2'>
                     {param} – Adults Only
                 </h2>
             );
         default:
-            return <h2 className='bg-gray-800 rounded-sm pl-2'>{param}</h2>;
+            return <h2 className='rounded-sm bg-gray-800 pl-2'>{param}</h2>;
     }
 }
 
@@ -54,8 +54,8 @@ export default async function MovieDetail({ params }: IMovieDetail) {
     const movie: IMovie = await data.json();
 
     return (
-        <div className='my-6 p-6 bg-slate-600 rounded-lg'>
-            <div className='flex justify-center items-start flex-wrap sm:flex-nowrap'>
+        <div className='my-6 rounded-lg bg-slate-600 p-6'>
+            <div className='flex flex-wrap items-start justify-center sm:flex-nowrap'>
                 <Image
                     src={`${
                         movie.Poster === 'N/A'
@@ -69,28 +69,28 @@ export default async function MovieDetail({ params }: IMovieDetail) {
                     className='my-2 drop-shadow-xl'
                 />
                 <AddToFavorites id={movie.imdbID} />
-                <div className='mx-2 text-md '>
+                <div className='text-md mx-2 '>
                     <h2 className='text-2xl font-bold'>{movie.Title}</h2>
                     <h2 className='pl-2'>
-                        <span className='text-slate-900 font-bold'>
+                        <span className='font-bold text-slate-900'>
                             Released:
                         </span>{' '}
                         {movie.Released}
                     </h2>
                     <h2 className='pl-2'>
-                        <span className='text-slate-900 font-bold'>
+                        <span className='font-bold text-slate-900'>
                             Runtime:
                         </span>{' '}
                         {movie.Runtime}
                     </h2>
                     <h2 className='pl-2'>
-                        <span className='text-slate-900 font-bold'>
+                        <span className='font-bold text-slate-900'>
                             Actors:
                         </span>{' '}
                         {movie.Actors}
                     </h2>
                     <h2 className='pl-2'>
-                        <span className='text-slate-900 font-bold'>
+                        <span className='font-bold text-slate-900'>
                             Languages:
                         </span>{' '}
                         {movie.Language}
@@ -103,7 +103,7 @@ export default async function MovieDetail({ params }: IMovieDetail) {
                                     key={rating.Source}
                                     className='flex flex-row gap-2'
                                 >
-                                    <div className='text-slate-900 font-bold pl-2'>
+                                    <div className='pl-2 font-bold text-slate-900'>
                                         {rating.Source}:
                                     </div>
                                     <div>{rating.Value}</div>
@@ -113,7 +113,7 @@ export default async function MovieDetail({ params }: IMovieDetail) {
                 </div>
             </div>
             <div className='py-4'>
-                <h3 className='text-slate-900 font-bold'>About</h3>
+                <h3 className='font-bold text-slate-900'>About</h3>
                 <span>{movie.Plot}</span>
             </div>
         </div>

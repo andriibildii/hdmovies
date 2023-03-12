@@ -8,11 +8,11 @@ export default function FavoritesFilms() {
     const favoriteMovies = useAppSelector((state) => state.favorites.favorites);
 
     return (
-        <div className='grid gap-1 grid-cols-fluid my-6 p-6 bg-slate-600 rounded-lg'>
+        <div className='my-6 grid grid-cols-fluid gap-1 rounded-lg bg-slate-600 p-6'>
             {favoriteMovies?.map((movie) => (
                 <div
                     key={movie.imdbID}
-                    className='flex justify-start items-center flex-wrap sm:flex-nowrap flex-col mb-2'
+                    className='mb-2 flex flex-col flex-wrap items-center justify-start sm:flex-nowrap'
                 >
                     <Link href={`/${movie.imdbID}`} className='drop-shadow-xl '>
                         <Image
@@ -26,8 +26,8 @@ export default function FavoritesFilms() {
                             alt='poster'
                         />
                     </Link>
-                    <div className='flex flex-col justify-center items-center pt-4'>
-                        <h4 className='text-md text-slate-900 font-bold'>
+                    <div className='flex flex-col items-center justify-center pt-4'>
+                        <h4 className='text-md font-bold text-slate-900'>
                             {movie.Title}
                         </h4>
                         <RemoveFromFavorites id={movie.imdbID} />

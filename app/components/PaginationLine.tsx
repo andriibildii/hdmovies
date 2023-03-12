@@ -51,10 +51,10 @@ export default function PaginationLine({
     };
 
     return (
-        <div className='flex justify-center flex-wrap md:justify-between md:flex-nowrap items-center bg-slate-600 rounded-lg my-6 p-4'>
+        <div className='my-6 flex flex-wrap items-center justify-center rounded-lg bg-slate-600 p-4 md:flex-nowrap md:justify-between'>
             <p className='text-md text-white-500 my-4 pl-6 font-montserrat'>
                 Showing{' '}
-                <span className='text-2xl text-slate-900 font-bold'>
+                <span className='text-2xl font-bold text-slate-900'>
                     {currentPage || 1}
                 </span>{' '}
                 of <span className='font-medium'>{pagesCount}</span> results

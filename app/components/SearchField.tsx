@@ -18,21 +18,21 @@ export default function SearchField() {
     };
 
     return (
-        <div className='flex justify-center items-center gap-4 my-2'>
+        <div className='my-2 flex items-center justify-center gap-4'>
             <form
                 onSubmit={handleSubmit}
-                className='flex justify-center flex-wrap sm:flex-nowrap'
+                className='flex flex-wrap justify-center sm:flex-nowrap'
             >
                 <input
                     type='text'
                     value={querySearch}
                     onChange={handleChange}
-                    className='py-2 px-4 text-sm text-slate-900 bg-slate-200 rounded-md font-medium my-1'
+                    className='my-1 rounded-md bg-slate-200 py-2 px-4 text-sm font-medium text-slate-900'
                     placeholder='Search movie...'
                 />
                 <button
                     type='submit'
-                    className='py-2 px-4 text-sm bg-slate-600 text-white rounded-lg ml-1 my-1'
+                    className='my-1 ml-1 rounded-lg bg-slate-600 py-2 px-4 text-sm text-white'
                 >
                     Search
                 </button>

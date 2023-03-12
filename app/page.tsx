@@ -11,8 +11,6 @@ interface IMovieSearch {
 
 async function getData(params: string, page: string) {
     try {
-        console.log('params', params);
-        console.log('page', page);
         const res = await fetch(
             `https://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&s=${params}&page=${page}`,
             { cache: 'no-store' }

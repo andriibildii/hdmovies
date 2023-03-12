@@ -12,7 +12,8 @@ export default function SearchField() {
 
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
-        router.push(`/?search=${querySearch}`);
+        const searchParam = querySearch.trim();
+        router.push(`/?search=${searchParam}`);
         setQuerySearch('');
     };
 

@@ -51,7 +51,7 @@ export default function PaginationLine({
     };
 
     return (
-        <div className='flex justify-between items-center px-2 bg-slate-600 rounded-lg my-6 p-2 '>
+        <div className='flex justify-center flex-wrap md:justify-between md:flex-nowrap items-center bg-slate-600 rounded-lg my-6 p-4'>
             <p className='text-md text-white-500 my-4 pl-6 font-montserrat'>
                 Showing{' '}
                 <span className='text-2xl text-slate-900 font-bold'>

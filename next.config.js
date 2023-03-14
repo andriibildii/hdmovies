@@ -9,6 +9,8 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: 'hdmovies-andriibildii.vercel.app',
+                port: '',
+                pathname: '/_next/image?url=',
             },
         ],
     },

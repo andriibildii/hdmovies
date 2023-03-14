@@ -10,7 +10,7 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'hdmovies.vercel.app',
                 port: '',
-                pathname: '/_next/image?',
+                pathname: '/_next/**',
             },
         ],
     },

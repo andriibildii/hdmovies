@@ -8,7 +8,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'hdmovies-andriibildii.vercel.app',
+                hostname: 'hdmovies.vercel.app/',
                 port: '',
                 pathname: '/_next/image?',
             },

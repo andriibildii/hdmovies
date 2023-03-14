@@ -7,10 +7,6 @@ import { useAppSelector } from '../hooks';
 export default function FavoritesFilms() {
     const favoriteMovies = useAppSelector((state) => state.favorites.favorites);
 
-    const loaderProp = ({ src }: { src: string }) => {
-        return src;
-    };
-
     return (
         <div className='my-6 grid grid-cols-fluid gap-1 rounded-lg bg-slate-600 p-6'>
             {favoriteMovies?.map((movie) => (
@@ -28,7 +24,6 @@ export default function FavoritesFilms() {
                             width={200}
                             height={220}
                             alt='poster'
-                            loader={loaderProp}
                         />
                     </Link>
                     <div className='flex flex-col items-center justify-center pt-4'>

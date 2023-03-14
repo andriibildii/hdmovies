@@ -8,7 +8,9 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'images.rawpixel.com',
+                hostname: '**',
+                port: '',
+                pathname: '**',
             },
         ],
     },

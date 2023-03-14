@@ -62,6 +62,10 @@ export async function generateMetadata({
 export default async function MovieDetail({ params }: IMovieDetail) {
     const movie: IMovie = await getMovie(params.movie);
 
+    const loaderProp = ({ src }: { src: string }) => {
+        return src;
+    };
+
     return (
         <div className='my-6 rounded-lg bg-slate-600 p-6'>
             <div className='flex flex-wrap items-start justify-center sm:flex-nowrap'>
@@ -76,6 +80,7 @@ export default async function MovieDetail({ params }: IMovieDetail) {
                     alt='poster'
                     priority={true}
                     className='my-2 drop-shadow-xl'
+                    loader={loaderProp}
                 />
                 <AddToFavorites id={movie.imdbID} />
                 <div className='text-md mx-2 '>

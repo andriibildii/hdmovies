@@ -1,7 +1,7 @@
-// import { getRate } from '../../utils/getRate';
 import Image from 'next/image';
 import AddToFavorites from '../components/AddToFavorites';
 import { IMovie } from '../types';
+import type { Metadata } from 'next';
 
 function getRate(param: string) {
     switch (param) {
@@ -45,13 +45,22 @@ interface IMovieDetail {
     params: { movie: string };
 }
 
-export default async function MovieDetail({ params }: IMovieDetail) {
-    const id = params.movie;
-
+async function getMovie(id: string) {
     const data = await fetch(
         `https://www.omdbapi.com/?apikey=${process.env.NEXT_PUBLIC_API_KEY}&i=${id}&plot=full`
     );
-    const movie: IMovie = await data.json();
+    return data.json();
+}
+
+export async function generateMetadata({
+    params,
+}: IMovieDetail): Promise<Metadata> {
+    const movie: IMovie = await getMovie(params.movie);
+    return { title: movie.Title, description: movie.Type };
+}
+
+export default async function MovieDetail({ params }: IMovieDetail) {
+    const movie: IMovie = await getMovie(params.movie);
 
     return (
         <div className='my-6 rounded-lg bg-slate-600 p-6'>
@@ -59,7 +68,7 @@ export default async function MovieDetail({ params }: IMovieDetail) {
                 <Image
                     src={`${
                         movie.Poster === 'N/A'
-                            ? '/defaultImage.webp'
+                            ? 'https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGRmbWE2LXBkZmFtb3VzcGFpbnRpbmcwMDIwMDEtaW1hZ2UtOGFfMTAuanBn.jpg'
                             : movie.Poster
                     } `}
                     width={300}

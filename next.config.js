@@ -5,6 +5,12 @@ const nextConfig = {
     },
     images: {
         domains: ['m.media-amazon.com', 'images.rawpixel.com'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'images.rawpixel.com',
+            },
+        ],
     },
 };
 

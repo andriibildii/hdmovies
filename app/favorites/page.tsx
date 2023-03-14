@@ -7,6 +7,10 @@ import { useAppSelector } from '../hooks';
 export default function FavoritesFilms() {
     const favoriteMovies = useAppSelector((state) => state.favorites.favorites);
 
+    const loaderProp = ({ src }: { src: string }) => {
+        return src;
+    };
+
     return (
         <div className='my-6 grid grid-cols-fluid gap-1 rounded-lg bg-slate-600 p-6'>
             {favoriteMovies?.map((movie) => (
@@ -18,12 +22,13 @@ export default function FavoritesFilms() {
                         <Image
                             src={`${
                                 movie.Poster === 'N/A'
-                                    ? '/defaultImage.webp'
+                                    ? 'https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGRmbWE2LXBkZmFtb3VzcGFpbnRpbmcwMDIwMDEtaW1hZ2UtOGFfMTAuanBn.jpg'
                                     : movie.Poster
                             } `}
                             width={200}
                             height={220}
                             alt='poster'
+                            loader={loaderProp}
                         />
                     </Link>
                     <div className='flex flex-col items-center justify-center pt-4'>

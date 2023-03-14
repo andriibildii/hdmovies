@@ -18,8 +18,8 @@ export default function Movie({ id, title, year, poster }: PropsType) {
                             ? 'https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGRmbWE2LXBkZmFtb3VzcGFpbnRpbmcwMDIwMDEtaW1hZ2UtOGFfMTAuanBn.jpg'
                             : poster
                     } `}
-                    width={200}
-                    height={200}
+                    width={300}
+                    height={445}
                     alt='poster'
                     priority={true}
                     className='drop-shadow-xl'

@@ -8,7 +8,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: '**.rawpixel.com',
+                hostname: 'hdmovies-andriibildii.vercel.app',
             },
         ],
     },

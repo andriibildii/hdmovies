@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import RemoveFromFavorites from '../components/RemoveFromFavorites';
 import { useAppSelector } from '../hooks';
+import defaultImage from '/public/defaultImage.webp';
 
 export default function FavoritesFilms() {
     const favoriteMovies = useAppSelector((state) => state.favorites.favorites);
@@ -16,11 +17,11 @@ export default function FavoritesFilms() {
                 >
                     <Link href={`/${movie.imdbID}`} className='drop-shadow-xl '>
                         <Image
-                            src={`${
+                            src={
                                 movie.Poster === 'N/A'
-                                    ? '/defaultImage.webp'
+                                    ? defaultImage
                                     : movie.Poster
-                            } `}
+                            }
                             width={200}
                             height={220}
                             alt='poster'

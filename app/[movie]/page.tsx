@@ -2,6 +2,7 @@ import Image from 'next/image';
 import AddToFavorites from '../components/AddToFavorites';
 import { IMovie } from '../types';
 import type { Metadata } from 'next';
+import defaultImage from '/public/defaultImage.webp';
 
 function getRate(param: string) {
     switch (param) {
@@ -66,11 +67,7 @@ export default async function MovieDetail({ params }: IMovieDetail) {
         <div className='my-6 rounded-lg bg-slate-600 p-6'>
             <div className='flex flex-wrap items-start justify-center sm:flex-nowrap'>
                 <Image
-                    src={`${
-                        movie.Poster === 'N/A'
-                            ? '/defaultImage.webp'
-                            : movie.Poster
-                    } `}
+                    src={movie.Poster === 'N/A' ? defaultImage : movie.Poster}
                     width={300}
                     height={445}
                     alt='poster'

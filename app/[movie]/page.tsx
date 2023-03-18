@@ -68,7 +68,7 @@ export default async function MovieDetail({ params }: IMovieDetail) {
                 <Image
                     src={`${
                         movie.Poster === 'N/A'
-                            ? 'https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGRmbWE2LXBkZmFtb3VzcGFpbnRpbmcwMDIwMDEtaW1hZ2UtOGFfMTAuanBn.jpg'
+                            ? '/defaultImage.webp'
                             : movie.Poster
                     } `}
                     width={300}

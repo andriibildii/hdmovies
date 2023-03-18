@@ -13,11 +13,7 @@ export default function Movie({ id, title, year, poster }: PropsType) {
         <div className='flex flex-col items-center justify-start'>
             <Link href={`/${id}`}>
                 <Image
-                    src={`${
-                        poster === 'N/A'
-                            ? 'https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcGRmbWE2LXBkZmFtb3VzcGFpbnRpbmcwMDIwMDEtaW1hZ2UtOGFfMTAuanBn.jpg'
-                            : poster
-                    } `}
+                    src={`${poster === 'N/A' ? '/defaultImage.webp' : poster} `}
                     width={300}
                     height={445}
                     alt='poster'
